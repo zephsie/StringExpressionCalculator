@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="base">20dp</dimen>
+    <dimen name="baseText">30sp</dimen>
+    <dimen name="largeText">40sp</dimen>
+</resources>
