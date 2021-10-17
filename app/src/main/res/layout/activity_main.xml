@@ -76,7 +76,7 @@
                     android:textSize="@dimen/baseText" />
 
                 <TextView
-                    android:id="@+id/delete"
+                    android:id="@+id/pi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/grayLight"
@@ -84,20 +84,7 @@
                     android:gravity="center"
                     android:onClick="onClickStart"
                     android:padding="@dimen/base"
-                    android:text="@string/delete"
-                    android:textColor="@color/grayDark"
-                    android:textSize="@dimen/baseText" />
-
-                <TextView
-                    android:id="@+id/power"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/grayLight"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="onClickStart"
-                    android:padding="@dimen/base"
-                    android:text="@string/power"
+                    android:text="@string/pi"
                     android:textColor="@color/grayDark"
                     android:textSize="@dimen/baseText" />
 
@@ -115,7 +102,7 @@
                     android:textSize="@dimen/baseText" />
 
                 <TextView
-                    android:id="@+id/pi"
+                    android:id="@+id/power"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/grayLight"
@@ -123,8 +110,21 @@
                     android:gravity="center"
                     android:onClick="onClickStart"
                     android:padding="@dimen/base"
-                    android:text="@string/pi"
-                    android:textColor="@color/grayDark"
+                    android:text="@string/power"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/baseText" />
+
+                <TextView
+                    android:id="@+id/delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grayLight"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="onClickStart"
+                    android:padding="@dimen/base"
+                    android:text="@string/delete"
+                    android:textColor="@color/green"
                     android:textSize="@dimen/baseText" />
             </TableRow>
 
@@ -182,7 +182,7 @@
                     android:onClick="onClickStart"
                     android:padding="@dimen/base"
                     android:text="@string/plus"
-                    android:textColor="@color/grayDark"
+                    android:textColor="@color/green"
                     android:textSize="@dimen/baseText" />
 
                 <TextView
@@ -195,7 +195,7 @@
                     android:onClick="onClickStart"
                     android:padding="@dimen/base"
                     android:text="@string/minus"
-                    android:textColor="@color/grayDark"
+                    android:textColor="@color/green"
                     android:textSize="@dimen/baseText" />
             </TableRow>
 
@@ -253,7 +253,7 @@
                     android:onClick="onClickStart"
                     android:padding="@dimen/base"
                     android:text="@string/mult"
-                    android:textColor="@color/grayDark"
+                    android:textColor="@color/green"
                     android:textSize="@dimen/baseText" />
 
                 <TextView
@@ -266,7 +266,7 @@
                     android:onClick="onClickStart"
                     android:padding="@dimen/base"
                     android:text="@string/div"
-                    android:textColor="@color/grayDark"
+                    android:textColor="@color/green"
                     android:textSize="@dimen/baseText" />
             </TableRow>
 
@@ -324,7 +324,7 @@
                     android:onClick="onClickStart"
                     android:padding="@dimen/base"
                     android:text="@string/bkt1"
-                    android:textColor="@color/grayDark"
+                    android:textColor="@color/green"
                     android:textSize="@dimen/baseText" />
 
                 <TextView
@@ -337,7 +337,7 @@
                     android:onClick="onClickStart"
                     android:padding="@dimen/base"
                     android:text="@string/bkt2"
-                    android:textColor="@color/grayDark"
+                    android:textColor="@color/green"
                     android:textSize="@dimen/baseText" />
             </TableRow>
 

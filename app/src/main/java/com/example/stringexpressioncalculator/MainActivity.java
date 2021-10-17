@@ -26,16 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                View.SYSTEM_UI_FLAG_FULLSCREEN |
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        onWindowFocusChanged(true);
 
         if (Build.VERSION.SDK_INT >= 28) {
             getWindow().getAttributes().layoutInDisplayCutoutMode =
@@ -47,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
     public void onWindowFocusChanged (boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
@@ -58,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
     }
-
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     public void onClickStart(View view) {
         int id = view.getId();
@@ -75,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             case R.id.delete: {
-                if (inputItems.size() > 0) {
+                if (!inputItems.isEmpty()) {
                     inputItems.remove(inputItems.size() - 1);
                 }
                 break;
@@ -101,25 +92,41 @@ public class MainActivity extends AppCompatActivity {
 
             String outputResult;
 
-            try {
-                double result = calculator.calculate(items.toString()
-                        .replace("e", "" + Math.E)
-                        .replace(Html.fromHtml("&#960;"), "" + Math.PI));
+            if (items.length() > 0) {
+                try {
+                    double result = calculator.calculate(items.toString()
+                            .replace("e", "" + Math.E)
+                            .replace(Html.fromHtml("&#960;"), "" + Math.PI)
+                            .replace(",", "."));
 
-                DecimalFormat decimalFormat = new DecimalFormat();
-                decimalFormat.setGroupingUsed(false);
+                    if (Double.isInfinite(result)) {
+                        outputResult = "Infinity";
+                    } else if (Double.isNaN(result)) {
+                        outputResult = "NaN";
+                    } else {
+                        DecimalFormat decimalFormat = new DecimalFormat();
+                        decimalFormat.setGroupingUsed(false);
 
-                int beforePoint = ("" + Math.round(result)).length();
+                        int indexE = String.valueOf(result).lastIndexOf("E");
 
-                decimalFormat.setMaximumFractionDigits(SPACE - beforePoint - 1);
+                        String partWithE = indexE > -1 ? String.valueOf(result).substring(indexE) : "";
+                        String partWithoutE = indexE > -1 ? String.valueOf(result).substring(0, indexE) : String.valueOf(result);
 
-                outputResult = decimalFormat.format(result).replace(",", ".");
+                        int partWithoutEBeforePointLength = String.valueOf(Math.round(Double.parseDouble(partWithoutE))).length();
 
-                if (Double.isInfinite(result) || Double.isNaN(result) || outputResult.length() > SPACE) {
-                    outputResult = "ERROR";
+                        decimalFormat.setMaximumFractionDigits(SPACE - partWithoutEBeforePointLength - 1 - partWithE.length());
+
+                        outputResult = decimalFormat.format(Double.parseDouble(partWithoutE)).replace(",", ".");
+
+                        outputResult += partWithE;
+                    }
+                } catch (DivideByZeroException e) {
+                    outputResult = "Divide by zero";
+                } catch (CalculatorException e) {
+                    outputResult = "Incorrect";
                 }
-            } catch (Exception e) {
-                outputResult = "ERROR";
+            } else {
+                outputResult = "";
             }
 
             output.setText(outputResult);

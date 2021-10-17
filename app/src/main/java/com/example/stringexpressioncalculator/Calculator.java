@@ -1,18 +1,29 @@
 package com.example.stringexpressioncalculator;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Stack;
+import java.util.Deque;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Calculator implements ICalculator{
-    public double calculate(String expression) throws Exception{
+public class Calculator implements ICalculator {
+    public double calculate(String expression) throws CalculatorException, DivideByZeroException {
         expression = expression
-                .replace(" ", "")
                 .replaceFirst("^-", "0-")
-                .replaceAll("\\(-", "(0-");
+                .replace("(-", "(0-");
 
-        return getAnswer(getReversePolishNotation(getItems(expression)));
+        double result;
+
+        try {
+            result = getAnswer(getReversePolishNotation(getItems(expression)));
+        } catch (DivideByZeroException e) {
+            throw new DivideByZeroException();
+        } catch (Exception e) {
+            throw new CalculatorException();
+        }
+
+        return result;
     }
 
     private ArrayList<String> getItems(String expression) {
@@ -32,7 +43,7 @@ public class Calculator implements ICalculator{
     }
 
     private ArrayList<String> getReversePolishNotation(ArrayList<String> items) {
-        Stack<String> stack = new Stack<>();
+        Deque<String> stack = new ArrayDeque<>();
 
         ArrayList<String> itemsRPN = new ArrayList<>();
 
@@ -47,22 +58,20 @@ public class Calculator implements ICalculator{
                     stack.push(item);
                     break;
                 case 5:
-                    while (getPriority(stack.peek()) != 4) {
+                    while (getPriority(Objects.requireNonNull(stack.peek())) != 4) {
                         itemsRPN.add(stack.pop());
                     }
 
                     stack.pop();
                     break;
                 default:
-                    if (stack.isEmpty()) {
-                        stack.push(item);
-                    } else {
+                    if (!stack.isEmpty()) {
                         boolean isPop;
 
                         do {
                             isPop = false;
 
-                            int latestItemPrior = getPriority(stack.peek());
+                            int latestItemPrior = getPriority(Objects.requireNonNull(stack.peek()));
 
                             if (latestItemPrior >= itemPrior && latestItemPrior < 4) {
                                 itemsRPN.add(stack.pop());
@@ -71,8 +80,9 @@ public class Calculator implements ICalculator{
                             }
                         } while (isPop && !stack.isEmpty());
 
-                        stack.push(item);
                     }
+
+                    stack.push(item);
                     break;
             }
         }
@@ -86,9 +96,9 @@ public class Calculator implements ICalculator{
         return itemsRPN;
     }
 
-    private double getAnswer(ArrayList<String> itemsRPN) throws Exception {
+    private double getAnswer(ArrayList<String> itemsRPN) throws CalculatorException, DivideByZeroException {
         if (itemsRPN.contains("(")) {
-            throw new Exception();
+            throw new CalculatorException();
         }
 
         double temp;
@@ -109,6 +119,10 @@ public class Calculator implements ICalculator{
                         break;
                     }
                     case "/": {
+                        if (Double.parseDouble(itemsRPN.get(i - 1)) == 0) {
+                            throw new DivideByZeroException();
+                        }
+
                         temp = Double.parseDouble(itemsRPN.get(i - 2)) / Double.parseDouble(itemsRPN.get(i - 1));
                         break;
                     }
@@ -157,6 +171,7 @@ public class Calculator implements ICalculator{
                 break;
             }
             default: {
+                break;
             }
         }
 
