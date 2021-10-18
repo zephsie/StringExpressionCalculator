@@ -8,7 +8,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator implements ICalculator {
-    public double calculate(String expression) throws CalculatorException, DivideByZeroException {
+    private static final String INVALID_INPUT = "Invalid input";
+    private static final String DIV_BY_ZERO = "Divided by zero";
+
+    public double calculate(String expression) throws CalculatorException {
         expression = expression
                 .replaceFirst("^-", "0-")
                 .replace("(-", "(0-");
@@ -17,10 +20,10 @@ public class Calculator implements ICalculator {
 
         try {
             result = getAnswer(getReversePolishNotation(getItems(expression)));
-        } catch (DivideByZeroException e) {
-            throw new DivideByZeroException();
+        } catch (CalculatorException e) {
+            throw new CalculatorException(e.getMessage());
         } catch (Exception e) {
-            throw new CalculatorException();
+            throw new CalculatorException(INVALID_INPUT);
         }
 
         return result;
@@ -29,7 +32,7 @@ public class Calculator implements ICalculator {
     private ArrayList<String> getItems(String expression) {
         ArrayList<String> items = new ArrayList<>();
 
-        String regex = "([0-9]+[.]?[0-9]*)|[+\\-*^/()]";
+        String regex = "([0-9]*[.]?[0-9]+)|([0-9]+[.]?[0-9]*)|[+\\-*^/()]";
 
         Pattern pattern = Pattern.compile(regex);
 
@@ -96,49 +99,59 @@ public class Calculator implements ICalculator {
         return itemsRPN;
     }
 
-    private double getAnswer(ArrayList<String> itemsRPN) throws CalculatorException, DivideByZeroException {
+    private double getAnswer(ArrayList<String> itemsRPN) throws CalculatorException {
         if (itemsRPN.contains("(")) {
-            throw new CalculatorException();
+            throw new CalculatorException(INVALID_INPUT);
         }
 
-        double temp;
+        double temp = 0;
 
-        while (itemsRPN.size() > 1) {
-            for (int i = 0; i < itemsRPN.size(); i++) {
-                switch (itemsRPN.get(i)) {
-                    case "+": {
-                        temp = Double.parseDouble(itemsRPN.get(i - 2)) + Double.parseDouble(itemsRPN.get(i - 1));
-                        break;
-                    }
-                    case "-": {
-                        temp = Double.parseDouble(itemsRPN.get(i - 2)) - Double.parseDouble(itemsRPN.get(i - 1));
-                        break;
-                    }
-                    case "*": {
-                        temp = Double.parseDouble(itemsRPN.get(i - 2)) * Double.parseDouble(itemsRPN.get(i - 1));
-                        break;
-                    }
-                    case "/": {
-                        if (Double.parseDouble(itemsRPN.get(i - 1)) == 0) {
-                            throw new DivideByZeroException();
-                        }
+        int i = 0;
 
-                        temp = Double.parseDouble(itemsRPN.get(i - 2)) / Double.parseDouble(itemsRPN.get(i - 1));
-                        break;
-                    }
-                    case "^": {
-                        temp = Math.pow(Double.parseDouble(itemsRPN.get(i - 2)), Double.parseDouble(itemsRPN.get(i - 1)));
-                        break;
-                    }
-                    default: continue;
+        while (i < itemsRPN.size()) {
+            boolean isOperator = true;
+
+            switch (itemsRPN.get(i)) {
+                case "+": {
+                    temp = Double.parseDouble(itemsRPN.get(i - 2)) + Double.parseDouble(itemsRPN.get(i - 1));
+                    break;
                 }
+                case "-": {
+                    temp = Double.parseDouble(itemsRPN.get(i - 2)) - Double.parseDouble(itemsRPN.get(i - 1));
+                    break;
+                }
+                case "*": {
+                    temp = Double.parseDouble(itemsRPN.get(i - 2)) * Double.parseDouble(itemsRPN.get(i - 1));
+                    break;
+                }
+                case "/": {
+                    if (Double.parseDouble(itemsRPN.get(i - 1)) == 0) {
+                        throw new CalculatorException(DIV_BY_ZERO);
+                    }
 
+                    temp = Double.parseDouble(itemsRPN.get(i - 2)) / Double.parseDouble(itemsRPN.get(i - 1));
+                    break;
+                }
+                case "^": {
+                    temp = Math.pow(Double.parseDouble(itemsRPN.get(i - 2)), Double.parseDouble(itemsRPN.get(i - 1)));
+                    break;
+                }
+                default: isOperator = false;
+            }
+
+            if (isOperator) {
                 itemsRPN.remove(i - 2);
                 itemsRPN.remove(i - 2);
                 itemsRPN.set(i - 2, "" + temp);
 
-                break;
+                i = 0;
+            } else {
+                i++;
             }
+        }
+
+        if (itemsRPN.size() > 1) {
+            throw new CalculatorException(INVALID_INPUT);
         }
 
         return Double.parseDouble(itemsRPN.get(0));

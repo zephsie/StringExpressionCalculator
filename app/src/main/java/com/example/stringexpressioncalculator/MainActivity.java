@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
     }
+
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     public void onClickStart(View view) {
         int id = view.getId();
@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
             ICalculator calculator = new Calculator();
 
+            AnswerFormat answerFormat = new AnswerFormat();
+
             String outputResult;
 
             if (items.length() > 0) {
@@ -104,26 +106,10 @@ public class MainActivity extends AppCompatActivity {
                     } else if (Double.isNaN(result)) {
                         outputResult = "NaN";
                     } else {
-                        DecimalFormat decimalFormat = new DecimalFormat();
-                        decimalFormat.setGroupingUsed(false);
-
-                        int indexE = String.valueOf(result).lastIndexOf("E");
-
-                        String partWithE = indexE > -1 ? String.valueOf(result).substring(indexE) : "";
-                        String partWithoutE = indexE > -1 ? String.valueOf(result).substring(0, indexE) : String.valueOf(result);
-
-                        int partWithoutEBeforePointLength = String.valueOf(Math.round(Double.parseDouble(partWithoutE))).length();
-
-                        decimalFormat.setMaximumFractionDigits(SPACE - partWithoutEBeforePointLength - 1 - partWithE.length());
-
-                        outputResult = decimalFormat.format(Double.parseDouble(partWithoutE)).replace(",", ".");
-
-                        outputResult += partWithE;
+                        outputResult = answerFormat.getFormattedAnswer(result, SPACE);
                     }
-                } catch (DivideByZeroException e) {
-                    outputResult = "Divide by zero";
                 } catch (CalculatorException e) {
-                    outputResult = "Incorrect";
+                    outputResult = e.getMessage();
                 }
             } else {
                 outputResult = "";
