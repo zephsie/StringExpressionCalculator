@@ -39,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                View.SYSTEM_UI_FLAG_FULLSCREEN |
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     public void onClickStart(View view) {
         int id = view.getId();
+
+        IExpressionChecker expressionChecker = new ExpressionChecker();
 
         TextView input = findViewById(R.id.input);
         TextView output = findViewById(R.id.output);
@@ -76,7 +78,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             default: {
-                inputItems.add(((TextView) findViewById(id)).getText().toString());
+                String currentItem = ((TextView) findViewById(id)).getText().toString();
+
+                if (expressionChecker.check(inputItems, currentItem)) {
+                    inputItems.add(currentItem);
+                }
             }
         }
 
@@ -88,33 +94,33 @@ public class MainActivity extends AppCompatActivity {
 
         input.setText(items.toString());
 
-            ICalculator calculator = new Calculator();
+        ICalculator calculator = new Calculator();
 
-            AnswerFormat answerFormat = new AnswerFormat();
+        AnswerFormat answerFormat = new AnswerFormat();
 
-            String outputResult;
+        String outputResult;
 
-            if (items.length() > 0) {
-                try {
-                    double result = calculator.calculate(items.toString()
-                            .replace("e", "" + Math.E)
-                            .replace(Html.fromHtml("&#960;"), "" + Math.PI)
-                            .replace(",", "."));
+        if (items.length() > 0) {
+            try {
+                double result = calculator.calculate(items.toString()
+                        .replace("e", "" + Math.E)
+                        .replace(Html.fromHtml("&#960;"), "" + Math.PI)
+                        .replace(",", "."));
 
-                    if (Double.isInfinite(result)) {
-                        outputResult = "Infinity";
-                    } else if (Double.isNaN(result)) {
-                        outputResult = "NaN";
-                    } else {
-                        outputResult = answerFormat.getFormattedAnswer(result, SPACE);
-                    }
-                } catch (CalculatorException e) {
-                    outputResult = e.getMessage();
+                if (Double.isInfinite(result)) {
+                    outputResult = "Infinity";
+                } else if (Double.isNaN(result)) {
+                    outputResult = "NaN";
+                } else {
+                    outputResult = answerFormat.getFormattedAnswer(result, SPACE);
                 }
-            } else {
-                outputResult = "";
+            } catch (CalculatorException e) {
+                outputResult = e.getMessage();
             }
+        } else {
+            outputResult = "";
+        }
 
-            output.setText(outputResult);
+        output.setText(outputResult);
     }
 }
