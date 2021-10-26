@@ -1,14 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.StringExpressionCalculator" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.StringExpressionCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/grayLight</item>
-        <item name="colorPrimaryVariant">@color/grayLight</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/colorBG</item>
+        <item name="colorPrimaryVariant">@color/colorOutput</item>
+        <item name="colorOnPrimary">@color/colorBG</item>
+        <item name="android:navigationBarColor">@color/colorBG</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green</item>
-        <item name="colorSecondaryVariant">@color/green</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">#4DFFFFFF</item>
+        <item name="colorSecondaryVariant">#4DFFFFFF</item>
+        <item name="colorOnSecondary">#C4202B20</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
