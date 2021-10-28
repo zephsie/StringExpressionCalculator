@@ -1,20 +1,11 @@
 package com.example.stringexpressioncalculator;
 
-import static android.view.View.SYSTEM_UI_FLAG_FULLSCREEN;
-import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-import static android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
-import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
+import android.text.Html;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
@@ -47,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
 
         getWindow().getDecorView().setSystemUiVisibility(
-                        SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        SYSTEM_UI_FLAG_FULLSCREEN |
-                        SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        SYSTEM_UI_FLAG_LAYOUT_STABLE |
-                        SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
-                        SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -62,18 +53,6 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     public void onClickStart(View view) {
         int id = view.getId();
-
-        final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        final VibrationEffect vibrationEffect;
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-
-            vibrationEffect = VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK);
-
-            vibrator.cancel();
-
-            vibrator.vibrate(vibrationEffect);
-        }
 
         IExpressionChecker expressionChecker = new ExpressionChecker();
 
@@ -125,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 double result = calculator.calculate(items.toString()
                         .replace("e", "" + Math.E)
-                        .replace("π", "" + Math.PI)
+                        .replace(Html.fromHtml("&#960;"), "" + Math.PI)
                         .replace(",", "."));
 
                 if (Double.isInfinite(result)) {
