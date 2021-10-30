@@ -22,6 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:layout_above="@+id/AddFun"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/output">
 
@@ -52,8 +54,8 @@
                 android:id="@+id/output"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/scroll_inp"
-                android:layout_marginTop="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
                 android:padding="@dimen/base"
                 android:text=""
                 android:textAlignment="textEnd"
