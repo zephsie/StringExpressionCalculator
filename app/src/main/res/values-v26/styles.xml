@@ -13,5 +13,6 @@
         <item name="minWidth">88dp</item>
         <item name="maxHeight">88dp</item>
         <item name="android:padding">25dp</item>
+        <item name="android:autoSizeTextType">uniform</item>
     </style>
 </resources>

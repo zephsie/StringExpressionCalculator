@@ -32,7 +32,7 @@ public class Calculator implements ICalculator {
     private ArrayList<String> getItems(String expression) {
         ArrayList<String> items = new ArrayList<>();
 
-        String regex = "([0-9]+[.]$)|([0-9]*[.]?[0-9]+)|([0-9]+[.]?[0-9]*)|[+\\-*^/()]";
+        String regex = "([0-9]+[.]?[0-9]*)|[+\\-*/^()]";
 
         Pattern pattern = Pattern.compile(regex);
 

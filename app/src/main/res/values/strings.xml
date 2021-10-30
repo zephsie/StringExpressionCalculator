@@ -21,6 +21,6 @@
     <string name="pi">π</string>
     <string name="e">e</string>
     <string name="power">^</string>
-    <string name="delete">←</string>
+    <string name="delete">⌫</string>
     <string name="deleteAll">C</string>
 </resources>

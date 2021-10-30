@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.text.Html;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     public void onClickStart(View view) {
         int id = view.getId();
+
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         final VibrationEffect vibrationEffect;
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView input = findViewById(R.id.input);
         TextView output = findViewById(R.id.output);
-        HorizontalScrollView scroll = (HorizontalScrollView) findViewById(R.id.scroll_inp);
+        HorizontalScrollView scroll = findViewById(R.id.scroll_inp);
 
         output.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.baseText));
 
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 double result = calculator.calculate(items.toString()
                         .replace("e", "" + Math.E)
-                        .replace(Html.fromHtml("&#960;"), "" + Math.PI)
+                        .replace("π", "" + Math.PI)
                         .replace(",", "."));
 
                 if (Double.isInfinite(result)) {
