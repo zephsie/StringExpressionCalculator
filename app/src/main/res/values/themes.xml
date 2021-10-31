@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.StringExpressionCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.StringExpressionCalculator" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorBG</item>
-        <item name="colorPrimaryVariant">@color/colorOutput</item>
+        <item name="colorPrimaryVariant">@color/green</item>
         <item name="colorOnPrimary">@color/colorBG</item>
         <item name="android:navigationBarColor">@color/colorBG</item>
         <!-- Secondary brand color. -->
