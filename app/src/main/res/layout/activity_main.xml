@@ -32,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
                 android:fillViewport="true"
                 android:scrollbars="none">
 
@@ -79,7 +80,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorBG"
+                android:backgroundTint="@color/colorAddFuncs"
                 android:gravity="center"
                 android:onClick="onClickStart"
                 android:padding="0dp"
@@ -97,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorBG"
+                android:backgroundTint="@color/colorAddFuncs"
                 android:gravity="center"
                 android:onClick="onClickStart"
                 android:padding="0dp"
@@ -115,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorBG"
+                android:backgroundTint="@color/colorAddFuncs"
                 android:gravity="center"
                 android:onClick="onClickStart"
                 android:padding="0dp"
@@ -125,6 +126,7 @@
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/baseText"
                 app:cornerRadius="20dp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -354,7 +356,7 @@
                 android:id="@+id/solve"
                 style="@style/Buttons"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/colorSolve"
+                android:backgroundTint="@color/colorClear"
                 android:onClick="onClickStart"
                 android:text="@string/solve"
                 app:cornerRadius="44dp" />

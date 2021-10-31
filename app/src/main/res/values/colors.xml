@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorSolve">#E647E687</color>
     <color name="colorNumbs">#1F74E7A2</color>
     <color name="colorFuncs">#B398F5BD</color>
     <color name="colorClear">#46E2AF</color>
     <color name="colorBG">#1A4AEB8B</color>
     <color name="colorOutput">#66E4AB</color>
     <color name="colorText">#212121</color>
+    <color name="colorAddFuncs">@color/colorBG</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
