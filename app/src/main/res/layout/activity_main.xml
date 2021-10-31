@@ -11,14 +11,20 @@
         android:layout_height="match_parent"
         android:background="@color/colorBG"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <RelativeLayout
             android:id="@+id/inp_out"
             android:layout_width="match_parent"
             android:layout_height="240dp"
+            android:layout_above="@+id/AddFun"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/output">
 
             <HorizontalScrollView
@@ -26,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
                 android:fillViewport="true"
                 android:scrollbars="none">
 
@@ -37,9 +44,9 @@
                     android:maxLines="1"
                     android:padding="0dp"
                     android:text=""
-                    android:textSize="@dimen/largeText"
                     android:textAlignment="textEnd"
                     android:textColor="@color/colorText"
+                    android:textSize="@dimen/largeText"
                     tools:ignore="RtlCompat" />
 
             </HorizontalScrollView>
@@ -48,8 +55,8 @@
                 android:id="@+id/output"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/scroll_inp"
-                android:layout_marginTop="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
                 android:padding="@dimen/base"
                 android:text=""
                 android:textAlignment="textEnd"
@@ -70,11 +77,10 @@
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorBG"
+                android:backgroundTint="@color/colorAddFuncs"
                 android:gravity="center"
                 android:onClick="onClickStart"
                 android:padding="0dp"
@@ -90,38 +96,37 @@
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorAddFuncs"
                 android:gravity="center"
                 android:onClick="onClickStart"
                 android:padding="0dp"
+                android:stateListAnimator="@null"
                 android:text="@string/e"
+                android:textAllCaps="false"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/baseText"
-                android:textAllCaps="false"
-                app:cornerRadius="20dp"
-                android:stateListAnimator="@null"
-                android:backgroundTint="@color/colorBG"/>
+                app:cornerRadius="20dp" />
 
             <Button
                 android:id="@+id/power"
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorAddFuncs"
                 android:gravity="center"
                 android:onClick="onClickStart"
                 android:padding="0dp"
+                android:stateListAnimator="@null"
                 android:text="@string/power"
+                android:textAllCaps="false"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/baseText"
-                android:textAllCaps="false"
-                app:cornerRadius="20dp"
-                android:stateListAnimator="@null"
-                android:backgroundTint="@color/colorBG" />
+                app:cornerRadius="20dp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -136,40 +141,39 @@
             <Button
                 android:id="@+id/deleteAll"
                 style="@style/Buttons"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorClear"
                 android:onClick="onClickStart"
                 android:text="@string/deleteAll"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorClear" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/bkt1"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/bkt1"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorFuncs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/bkt2"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/bkt2"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorFuncs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/div"
                 style="@style/Buttons"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/div"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorFuncs" />
+                app:cornerRadius="44dp" />
 
         </LinearLayout>
 
@@ -184,40 +188,39 @@
             <Button
                 android:id="@+id/seven"
                 style="@style/Buttons"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/seven"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/eight"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/eight"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/nine"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/nine"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/mult"
                 style="@style/Buttons"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/mult"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorFuncs" />
+                app:cornerRadius="44dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -231,40 +234,39 @@
             <Button
                 android:id="@+id/four"
                 style="@style/Buttons"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/four"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/five"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/five"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/six"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/six"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/minus"
                 style="@style/Buttons"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/minus"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorFuncs" />
+                app:cornerRadius="44dp" />
 
         </LinearLayout>
 
@@ -279,40 +281,39 @@
             <Button
                 android:id="@+id/one"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/one"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/two"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/two"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/three"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/three"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/plus"
                 style="@style/Buttons"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/plus"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorFuncs" />
+                app:cornerRadius="44dp" />
 
         </LinearLayout>
 
@@ -326,40 +327,39 @@
             <Button
                 android:id="@+id/point"
                 style="@style/Buttons"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/point"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/zero"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/zero"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/delete"
                 style="@style/Buttons"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/delete"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorNumbs" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/solve"
                 style="@style/Buttons"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/colorClear"
                 android:onClick="onClickStart"
                 android:text="@string/solve"
-                app:cornerRadius="44dp"
-                android:backgroundTint="@color/colorSolve" />
+                app:cornerRadius="44dp" />
 
         </LinearLayout>
     </RelativeLayout>
