@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/darkGreen"
+        android:background="@color/colorBG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -80,7 +80,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorAddFuncs"
                 android:gravity="center"
                 android:onClick="onClickStart"
                 android:padding="0dp"
@@ -89,8 +89,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/baseText"
-                app:cornerRadius="@dimen/radius1"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="20dp" />
 
             <Button
                 android:id="@+id/e"
@@ -99,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorAddFuncs"
                 android:gravity="center"
                 android:onClick="onClickStart"
                 android:padding="0dp"
@@ -108,8 +107,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/baseText"
-                app:cornerRadius="@dimen/radius1"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="20dp" />
 
             <Button
                 android:id="@+id/power"
@@ -118,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorAddFuncs"
                 android:gravity="center"
                 android:onClick="onClickStart"
                 android:padding="0dp"
@@ -127,8 +125,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/baseText"
-                app:cornerRadius="@dimen/radius1"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="20dp" />
 
         </LinearLayout>
 
@@ -146,41 +143,37 @@
                 style="@style/Buttons"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/lightGreen"
+                android:backgroundTint="@color/colorClear"
                 android:onClick="onClickStart"
                 android:text="@string/deleteAll"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/bkt1"
                 style="@style/Buttons"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/green"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/bkt1"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/bkt2"
                 style="@style/Buttons"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/green"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/bkt2"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/div"
                 style="@style/Buttons"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/green"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/div"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
         </LinearLayout>
 
@@ -197,41 +190,37 @@
                 style="@style/Buttons"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/seven"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/eight"
                 style="@style/Buttons"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/eight"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/nine"
                 style="@style/Buttons"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/nine"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/mult"
                 style="@style/Buttons"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/green"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/mult"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -247,41 +236,37 @@
                 style="@style/Buttons"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/four"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/five"
                 style="@style/Buttons"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/five"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/six"
                 style="@style/Buttons"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/six"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/minus"
                 style="@style/Buttons"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/green"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/minus"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
         </LinearLayout>
 
@@ -298,41 +283,37 @@
                 style="@style/Buttons"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/one"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/two"
                 style="@style/Buttons"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/two"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/three"
                 style="@style/Buttons"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/three"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/plus"
                 style="@style/Buttons"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/green"
+                android:backgroundTint="@color/colorFuncs"
                 android:onClick="onClickStart"
                 android:text="@string/plus"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
         </LinearLayout>
 
@@ -348,41 +329,37 @@
                 style="@style/Buttons"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/point"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/zero"
                 style="@style/Buttons"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/zero"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/delete"
                 style="@style/Buttons"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/darkGreen"
+                android:backgroundTint="@color/colorNumbs"
                 android:onClick="onClickStart"
                 android:text="@string/delete"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
             <Button
                 android:id="@+id/solve"
                 style="@style/Buttons"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/lightGreen"
+                android:backgroundTint="@color/colorClear"
                 android:onClick="onClickStart"
                 android:text="@string/solve"
-                app:cornerRadius="@dimen/radius2"
-                tools:ignore="UsingOnClickInXml" />
+                app:cornerRadius="44dp" />
 
         </LinearLayout>
     </RelativeLayout>

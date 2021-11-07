@@ -7,6 +7,9 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The type Calculator.
+ */
 public class Calculator implements ICalculator {
     private static final String INVALID_INPUT = "Invalid input";
     private static final String DIV_BY_ZERO = "Divided by zero";

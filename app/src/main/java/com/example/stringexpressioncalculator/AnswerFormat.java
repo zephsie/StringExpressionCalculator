@@ -2,6 +2,9 @@ package com.example.stringexpressioncalculator;
 
 import java.text.DecimalFormat;
 
+/**
+ * The type Answer format.
+ */
 public class AnswerFormat implements IAnswerFormat{
     public String getFormattedAnswer(double result, int space) {
         String outputResult;

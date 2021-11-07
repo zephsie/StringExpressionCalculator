@@ -3,7 +3,7 @@
     <style name="Theme.StringExpressionCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorBG</item>
-        <item name="colorPrimaryVariant">@color/green</item>
+        <item name="colorPrimaryVariant">@color/colorOutput</item>
         <item name="colorOnPrimary">@color/colorBG</item>
         <item name="android:navigationBarColor">@color/colorBG</item>
         <!-- Secondary brand color. -->

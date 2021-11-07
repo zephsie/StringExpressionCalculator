@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="darkGreen">#59426354</color>
+    <color name="colorNumbs">#59426354</color>
     <color name="colorFuncs">#4D1C976B</color>
-    <color name="lightGreen">#DA3A8D70</color>
+    <color name="colorClear">#DA3A8D70</color>
     <color name="colorBG">#31493D</color>
-    <color name="green">#338F63</color>
+    <color name="colorOutput">#338F63</color>
     <color name="colorText">#CFC7C7</color>
     <color name="colorAddFuncs">#17426A56</color>
 

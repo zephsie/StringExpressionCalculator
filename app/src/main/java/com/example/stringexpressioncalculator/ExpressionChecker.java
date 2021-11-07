@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The type Expression checker.
+ */
 public class ExpressionChecker implements IExpressionChecker {
     public boolean check(List<String> inputItems, String currentItem) {
         if (!inputItems.isEmpty()) {
