@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorNumbs">#59426354</color>
-    <color name="colorFuncs">#4D1C976B</color>
-    <color name="colorClear">#DA3A8D70</color>
-    <color name="colorBG">#31493D</color>
-    <color name="colorOutput">#338F63</color>
-    <color name="colorText">#CFC7C7</color>
-    <color name="colorAddFuncs">#17426A56</color>
-
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-
+    <color name="colorBG">#31493d</color>
+    <color name="colorClear">#398469</color>
+    <color name="colorNumbs">#3b594a</color>
+    <color name="colorFuncs">@color/colorClear</color>
+    <color name="colorOutput">@color/colorClear</color>
+    <color name="colorAddFuncs">@color/colorNumbs</color>
+    <color name="colorText">#cfc7c7</color>
 </resources>

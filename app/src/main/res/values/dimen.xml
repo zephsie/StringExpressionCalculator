@@ -1,9 +1,11 @@
 <resources>
-    <dimen name="base">20dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="small">3dp</dimen>
+    <dimen name="base">10dp</dimen>
+
+    <dimen name="smallRadius">20dp</dimen>
+    <dimen name="baseRadius">45dp</dimen>
+
     <dimen name="baseText">30sp</dimen>
     <dimen name="largeText">40sp</dimen>
-    <dimen name="radius1">20dp</dimen>
-    <dimen name="radius2">44dp</dimen>
-    <dimen name="start">16dp</dimen>
-    <dimen name="end">8dp</dimen>
 </resources>

@@ -22,5 +22,5 @@
     <string name="e">e</string>
     <string name="power">^</string>
     <string name="delete">⌫</string>
-    <string name="deleteAll">C</string>
+    <string name="deleteAll">c</string>
 </resources>

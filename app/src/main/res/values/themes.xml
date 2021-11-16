@@ -1,17 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Theme.StringExpressionCalculator" parent="Theme.MaterialComponents.DayNight">
-        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorBG</item>
-        <item name="colorPrimaryVariant">@color/green</item>
+        <item name="colorPrimaryVariant">@android:color/transparent</item>
         <item name="colorOnPrimary">@color/colorBG</item>
         <item name="android:navigationBarColor">@color/colorBG</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">#4DFFFFFF</item>
-        <item name="colorSecondaryVariant">#4DFFFFFF</item>
-        <item name="colorOnSecondary">#C4202B20</item>
-        <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    </style>
+    <style name="Theme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/colorBG</item>
+        <item name="colorPrimary">@color/colorBG</item>
+        <item name="colorPrimaryVariant">@color/colorBG</item>
+        <item name="colorOnPrimary">@color/colorBG</item>
+        <item name="android:navigationBarColor">@color/colorBG</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 </resources>
