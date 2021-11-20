@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id "org.sonarqube" version "3.3"
+    id 'jacoco'
 }
 
 sonarqube {
@@ -8,6 +9,8 @@ sonarqube {
         property "sonar.projectKey", "zephsie_StringExpressionCalculator"
         property "sonar.organization", "zephsie"
         property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.coverage.jacoco.xmlReportPaths", fileTree(include: ['jacoco*.xml'], dir: "$buildDir/reports/jacoco/jacocoUnitTestReport").collect()
+        property "sonar.junit.reportsPath", "$buildDir/test-results/test*/TEST-*.xml"
     }
 }
 
@@ -22,29 +25,44 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
         release {
+            testCoverageEnabled true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled true
+        }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     lintOptions {
         abortOnError false
     }
+
+    testOptions {
+        execution 'ANDROID_TEST_ORCHESTRATOR'
+        unitTests.all {
+            finalizedBy jacocoUnitTestReport
+        }
+    }
+
+
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-    testImplementation 'junit:junit:4.+'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    testImplementation 'org.testng:testng:6.9.6'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
@@ -57,4 +75,40 @@ dependencies {
                    FLAG_MUTABLE and will fail in apps targeting S+.'''
         }
     }
+}
+
+task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'copyReport']) {
+    def coverageSourceDirs = [
+            "src/main/java"
+    ]
+    def fileFilter = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/*$ViewInjector*.*',
+            '**/*$ViewBinder*.*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*'
+    ]
+    def javaClasses = fileTree(
+            dir: "$buildDir/intermediates/javac/debug/classes",
+            excludes: fileFilter
+    )
+    classDirectories.setFrom(files([ javaClasses ]))
+    additionalSourceDirs.setFrom(files(coverageSourceDirs))
+    sourceDirectories.setFrom(files(coverageSourceDirs))
+    executionData.setFrom(fileTree(dir: "$buildDir", includes: [
+            "jacoco/testDebugUnitTest.exec"
+    ]))
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+tasks.register('copyReport', Copy) {
+    doLast {
+        mkdir "$buildDir/jacoco"
+    }
+    from "$buildDir/outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec"
+    into "$buildDir/jacoco"
 }

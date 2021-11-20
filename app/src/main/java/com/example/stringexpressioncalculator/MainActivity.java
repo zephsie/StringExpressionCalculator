@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.TypedValue;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
@@ -63,23 +64,6 @@ public class MainActivity extends AppCompatActivity {
         loadAd();
     }
 
-    @Override
-    public void onWindowFocusChanged (boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-    }
-
     private void loadAd() {
         InterstitialAd.load(this,"\n" +
                         "ca-app-pub-6240815819353431/1683112214", adRequest,
@@ -115,11 +99,13 @@ public class MainActivity extends AppCompatActivity {
         int id = view.getId();
 
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
         final VibrationEffect vibrationEffect;
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            view.performHapticFeedback(HapticFeedbackConstants.CONFIRM);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             vibrationEffect = VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK);
-
             vibrator.cancel();
             vibrator.vibrate(vibrationEffect);
         }

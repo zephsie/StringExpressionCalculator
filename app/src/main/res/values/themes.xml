@@ -1,17 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.StringExpressionCalculator" parent="Theme.MaterialComponents.DayNight">
+    <style name="Theme.StringExpressionCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorBG</item>
-        <item name="colorPrimaryVariant">@android:color/transparent</item>
+        <item name="colorPrimaryVariant">@color/colorOutput</item>
         <item name="colorOnPrimary">@color/colorBG</item>
         <item name="android:navigationBarColor">@color/colorBG</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
-    <style name="Theme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/colorBG</item>
-        <item name="colorPrimary">@color/colorBG</item>
-        <item name="colorPrimaryVariant">@color/colorBG</item>
-        <item name="colorOnPrimary">@color/colorBG</item>
-        <item name="android:navigationBarColor">@color/colorBG</item>
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+    <style name="Theme.Splash" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 </resources>
