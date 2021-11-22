@@ -8,12 +8,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * The type Calculator.
+ * The class implements the calculation of the value of an expression.
  */
 public class Calculator implements ICalculator {
+
+    /**
+     * The value of the output string in case of incorrect input.
+     */
     private static final String INVALID_INPUT = "Invalid input";
+
+    /**
+     * The value of the output string when you enter an expression containing division by zero.
+     */
     private static final String DIV_BY_ZERO = "Divided by zero";
 
+    /**
+     * Calculates the value of expression and returns result.
+     * @param expression the expression taken as {@linkplain String}.
+     * @return Returns the calculated value of the expression or {@value INVALID_INPUT} or {@value DIV_BY_ZERO} in the case of invalid input.
+     * @throws CalculatorException if the input is invalid.
+     */
     public double calculate(String expression) throws CalculatorException {
         expression = expression
                 .replaceFirst("^-", "0-")
@@ -32,6 +46,13 @@ public class Calculator implements ICalculator {
         return result;
     }
 
+    /**
+     * Converts the input string of an expression into an array {@linkplain ArrayList} of operators, operands, and brackets using regular expressions.
+     * @param expression the expression taken as {@link String}
+     * @return Returns an expression as an {@linkplain ArrayList}, the elements of which are operators, operands, and brackets.
+     * @see ArrayList
+     * @see java.util.regex
+     */
     private ArrayList<String> getItems(String expression) {
         ArrayList<String> items = new ArrayList<>();
 
@@ -48,6 +69,12 @@ public class Calculator implements ICalculator {
         return items;
     }
 
+    /**
+     * Converts an array {@linkplain ArrayList} obtained from {@link Calculator#getItems} into an expression in the form of Reverse Polish Notation.
+     * @param items expression in the infix notation as an array {@linkplain ArrayList} obtained in {@link Calculator#getItems}.
+     * @return Returns the expression in the form of Reverse Polish Notation as an {@linkplain ArrayList}.
+     * @see <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish notation</a>
+     */
     private ArrayList<String> getReversePolishNotation(ArrayList<String> items) {
         Deque<String> stack = new ArrayDeque<>();
 
@@ -102,6 +129,12 @@ public class Calculator implements ICalculator {
         return itemsRPN;
     }
 
+    /**
+     * Calculates expression values in Reverse Polish Notation.
+     * @param itemsRPN the expression in the form of Reverse Polish Notation as an {@linkplain ArrayList} derived from the method {@linkplain Calculator#getReversePolishNotation}
+     * @return Returns the result of the calculation or {@value INVALID_INPUT} if the input is invalid.
+     * @throws CalculatorException if there is an unnecessary bracket.
+     */
     private double getAnswer(ArrayList<String> itemsRPN) throws CalculatorException {
         if (itemsRPN.contains("(")) {
             throw new CalculatorException(INVALID_INPUT);
@@ -160,6 +193,11 @@ public class Calculator implements ICalculator {
         return Double.parseDouble(itemsRPN.get(0));
     }
 
+    /**
+     * Returns the priority of the symbols from the expression for Reverse Polish Notation.
+     * @param item symbol.
+     * @return Returns the priority of the symbol.
+     */
     private static int getPriority(String item) {
         int priority = 0;
 

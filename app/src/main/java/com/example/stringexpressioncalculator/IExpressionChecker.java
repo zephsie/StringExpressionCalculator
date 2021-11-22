@@ -3,15 +3,11 @@ package com.example.stringexpressioncalculator;
 import java.util.List;
 
 /**
- * The interface Expression checker.
+ * The interface of the {@link ExpressionChecker} class that implements the {@link ExpressionChecker#check} method.
+ *
+ * {@inheritDoc}
  */
 public interface IExpressionChecker {
-    /**
-     * Check boolean.
-     *
-     * @param inputItems  the input items
-     * @param currentItem the current item
-     * @return the boolean
-     */
+
     boolean check(List<String> inputItems, String currentItem);
 }

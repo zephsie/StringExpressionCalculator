@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.TypedValue;
-import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
@@ -102,9 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         final VibrationEffect vibrationEffect;
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            view.performHapticFeedback(HapticFeedbackConstants.CONFIRM);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             vibrationEffect = VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK);
             vibrator.cancel();
             vibrator.vibrate(vibrationEffect);
