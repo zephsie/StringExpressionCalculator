@@ -1,2 +1,2 @@
 # StringExpressionCalculator
-Calculator for calculating
+Calculator for calculating 
