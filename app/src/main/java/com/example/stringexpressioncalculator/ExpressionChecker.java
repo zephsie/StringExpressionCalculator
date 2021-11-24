@@ -6,9 +6,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * The type Expression checker.
+ * The class implements a validation of the character input in the expression.
  */
 public class ExpressionChecker implements IExpressionChecker {
+
+    /**
+     * Checks if the character can be entered in the expression.
+     * Answers the question "Can this symbol be entered?"
+     * @param inputItems input expression.
+     * @param currentItem character to check.
+     * @return Returns the result of the test.
+     */
     public boolean check(List<String> inputItems, String currentItem) {
         if (!inputItems.isEmpty()) {
             currentItem = currentItem

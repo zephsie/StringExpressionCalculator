@@ -7,7 +7,7 @@ public class CalculatorException extends Exception {
     /**
      * Instantiates a new Calculator exception.
      *
-     * @param message the message
+     * @param message name of the exception.
      */
     public CalculatorException(String message) {
         super(message);

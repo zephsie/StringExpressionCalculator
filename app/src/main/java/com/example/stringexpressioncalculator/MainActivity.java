@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
     private AdRequest adRequest;
 
     /**
-     * The Input items.
+     * Input items.
      */
     ArrayList<String> inputItems = new ArrayList<>();
 
     /**
-     * The constant SPACE.
+     * Sets the length of the output string.
      */
     public static final int SPACE = 15;
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * On click start.
      *
-     * @param view the view
+     * @param view pressed button.
      */
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     public void onClickStart(View view) {

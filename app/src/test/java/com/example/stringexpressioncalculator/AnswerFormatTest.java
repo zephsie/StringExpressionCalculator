@@ -16,13 +16,13 @@ public class AnswerFormatTest {
     public void Test() {
         double result = 66666666;
         String formResult = format.getFormattedAnswer(result, MainActivity.SPACE);
-        Assert.assertEquals(formResult, "6.6666666E7");
+        Assert.assertEquals("6.6666666E7", formResult);
     }
 
     @Test
     public void Test2() {
         double result = 6666666;
         String formResult = format.getFormattedAnswer(result, MainActivity.SPACE);
-        Assert.assertEquals(formResult, "6666666");
+        Assert.assertEquals("6666666", formResult);
     }
 }

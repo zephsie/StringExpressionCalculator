@@ -3,9 +3,16 @@ package com.example.stringexpressioncalculator;
 import java.text.DecimalFormat;
 
 /**
- * The type Answer format.
+ * The class implements the conversion of the result string into a format suitable for output.
  */
 public class AnswerFormat implements IAnswerFormat{
+
+    /**
+     * Converts the result string to a format suitable for output.
+     * @param result the raw output string of the {@linkplain Calculator}.
+     * @param space sets the length of the output string.
+     * @return Returns the formatted string.
+     */
     public String getFormattedAnswer(double result, int space) {
         String outputResult;
 
